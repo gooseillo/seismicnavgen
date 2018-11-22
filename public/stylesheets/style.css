@@ -1,0 +1,33 @@
+body {
+  padding: 50px;
+  font-family: 'Quicksand', sans-serif;
+  font-size: 1em;
+}
+
+a {
+  color: #00B7FF;
+}
+
+button {
+  border: solid 1px black;
+  padding: 8px;
+  background-color: white;
+  border-radius: 10px;
+  color: black;
+}
+
+button:hover {
+  cursor: pointer;
+}
+
+.form {
+  margin-bottom: 10px;
+}
+
+input[type=file] {
+  margin-top: 15px;
+}
+
+select {
+  margin-left: 15px;
+}
