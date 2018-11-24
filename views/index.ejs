@@ -11,7 +11,7 @@
     <div class="form">
         <label for="length" class="title">Length File</label>
         <br>
-        <input type="file" name="length" id="lengthFile" onchange="lengthOnChange()">
+        <input type="file" name="length" id="lengthFile" accept=".csv" onchange="lengthOnChange()">
       <p>Select your data set for</p>
       <div>
         <label for="name1">Line Name: </label>
@@ -34,7 +34,7 @@
     <div class="form">
         <label for="shotPoint" class="title">Shot Points File</label>
         <br>
-        <input type="file" name="shotPoint" id="spFile" onchange="spOnChange()">
+        <input type="file" name="shotPoint" id="spFile" accept=".csv" onchange="spOnChange()">
       <p>Select your data set for</p>
       <div class="item">
         <label for="name2">Line Name: </label>
@@ -53,7 +53,7 @@
 
     <div>
         <button onclick="getOptions()">Run</button>
-        <button id="downloadCsv" onclick="download()">Download</button>
+        <button id="downloadCsv" onclick="download()" disabled>Download</button>
     </div>
 
     <p id="msg"></p>

@@ -1,6 +1,7 @@
 var allLengthResults;
 var allSpResults;
 var lineName = document.getElementById('name');
+var fileName = document.getElementById('nameSelect');
 var lengthFieldsSelected = [];
 var spFieldsSelected = [];
 var spinit, spfinal, currentName;
@@ -59,7 +60,7 @@ function getOptions(){
             delete allLengthResults[0][j][key];
        });
    }
-   calculate();
+   nameCheck();
 }
 
 function populateOptions(myArr, className){
@@ -74,13 +75,13 @@ function populateOptions(myArr, className){
             opt.innerHTML = myArr[j];
             select[i].appendChild(opt);
         }
+        select[i].selectedIndex = -1;
     }
 }
 
 function calculate(){
     var spSelectedI = document.getElementById('iSPSelect');
     var spSelectedF = document.getElementById('fSPSelect');
-    var fileName = document.getElementById('nameSelect');
     var selectedLength = document.getElementById('tLengthSelect');
     for(var i = 0; i < allSpResults[0].length; i++){
         var spa, filtered;
@@ -102,6 +103,7 @@ function calculate(){
         finalArray.push(filtered);
     }
     document.getElementById('msg').innerHTML = "Your files are ready! Click Download to download your files.";
+    document.getElementById('downloadCsv').disabled = false;
     console.log(finalArray);
 }
 
@@ -109,15 +111,40 @@ function getNumber(value){
     return Number(value.split(/\D/).shift());
 }
 
-function download(){
-    var zip = new JSZip();
-    for(var i = 0; i < finalArray.length; i++){
-        var csv = Papa.unparse(finalArray[i]);
-        var csvName;
-        csvName = finalArray[i][0][lineName.value] + ".csv";
-        zip.file(csvName, csv);
+function nameCheck(){
+    const unique = (value, index, self) => {
+        return self.indexOf(value) === index;
     }
-    zip.generateAsync({type:"base64"}).then(function(content){
-        window.location = "data:application/zip;base64," + content;
-    });
+    var nameArr1 = [];
+    var nameArr2 = [];
+    var newArr = [];
+    for(var i = 0; i < allLengthResults[0].length; i++){
+        nameArr1.push(allLengthResults[0][i][lineName.value]);
+    }
+    for(var j = 0; j < allSpResults[0].length; j++){
+        nameArr2.push(allSpResults[0][j][fileName.value]);
+    }
+    newArr = nameArr1.filter(unique);
+    if(newArr.sort().join(',') === nameArr2.sort().join(',')){
+        calculate();
+    } else {
+        document.getElementById('msg').innerHTML = "Error. Line names do not match. Please check your selected options or your csv data.";
+    }
+}
+
+function download(){
+    // var zip = new JSZip();
+    // for(var i = 0; i < finalArray.length; i++){
+    //     var csv = Papa.unparse(finalArray[i]);
+    //     var csvName;
+    //     csvName = finalArray[i][0][lineName.value] + ".csv";
+    //     zip.file(csvName, csv);
+    // }
+    // zip.generateAsync({type:"base64"}).then(function(content){
+    //     window.location = "data:application/zip;base64," + content;
+    // });
+    for(var i = 0; i < finalArray.length; i++){
+        console.log(finalArray[i][0][lineName.value]);
+    }
+    
 }
