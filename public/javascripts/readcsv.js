@@ -133,18 +133,18 @@ function nameCheck(){
 }
 
 function download(){
-    // var zip = new JSZip();
-    // for(var i = 0; i < finalArray.length; i++){
-    //     var csv = Papa.unparse(finalArray[i]);
-    //     var csvName;
-    //     csvName = finalArray[i][0][lineName.value] + ".csv";
-    //     zip.file(csvName, csv);
-    // }
-    // zip.generateAsync({type:"base64"}).then(function(content){
-    //     window.location = "data:application/zip;base64," + content;
-    // });
+    var zip = new JSZip();
     for(var i = 0; i < finalArray.length; i++){
-        console.log(finalArray[i][0][lineName.value]);
+        var csv = Papa.unparse(finalArray[i]);
+        var csvName;
+        csvName = finalArray[i][0][lineName.value] + ".csv";
+        zip.file(csvName, csv);
     }
+    zip.generateAsync({type:"base64"}).then(function(content){
+        window.location = "data:application/zip;base64," + content;
+    });
+    // for(var i = 0; i < finalArray.length; i++){
+    //     console.log(finalArray[i][0][lineName.value]);
+    // }
     
 }
