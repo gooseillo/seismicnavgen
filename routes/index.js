@@ -4,7 +4,7 @@ var router = express.Router();
 
 /* GET home page. */
 router.get('/', secured(), function(req, res, next) {
-  res.render('index', { user: req.user });
+  res.render('index');
 });
 
 router.get('/landing', function(req, res, next){
