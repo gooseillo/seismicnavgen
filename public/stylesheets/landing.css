@@ -1,0 +1,41 @@
+html {
+    background: url('../images/mirror.jpg') no-repeat center center fixed;
+    background-size: cover;
+    
+}
+
+#landing {
+    position: relative;
+    padding: 10px;
+    color: white;
+    text-align: center;
+    background-color: rgba(0, 0, 0, 0.5);
+    margin: 0 auto;
+    height: 60vh;
+    width: 80%;
+  }
+
+h4 {
+    position: absolute;
+    top: 30%;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+button {
+    background-color: transparent;
+    border: solid white 1px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+button:hover {
+    background-color: black;
+}
+
+a {
+    text-decoration: none;
+    color: white;
+}

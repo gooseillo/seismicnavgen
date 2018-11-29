@@ -1,40 +1,45 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <title>CSV Reader</title>
-    <link href="https://fonts.googleapis.com/css?family=Quicksand" rel="stylesheet">
-    <link rel='stylesheet' href='/stylesheets/style.css' />
-  </head>
-  <body>
-    <h4>Upload Your CSV Files</h4>
-    
+<% include ./partials/header %>
+<nav>
+  <div>
+    <img id="logo" src="/images/radix-logo.png">
+  </div>
+  <div id="links">
+    <a href="/logout">Logout</a>
+  </div>
+  
+</nav>
+<div id="main">
+  
+  <h4>Upload Your CSV Files</h4>
+
+  <form id="myForm">
     <div class="form">
-        <label for="length" class="title">Length File</label>
-        <br>
-        <input type="file" name="length" id="lengthFile" accept=".csv" onchange="lengthOnChange()">
+      <label for="length" class="title">Length File</label>
+      <br>
+      <input type="file" name="length" id="lengthFile" accept=".csv" onchange="lengthOnChange()">
       <p>Select your data set for</p>
-      <div>
+      <div class="item">
         <label for="name1">Line Name: </label>
         <select name="name1" id="name" class="lengthSelect"></select>
       </div>
-      <div>
+      <div class="item">
         <label for="x">X: </label>
         <select name="x" id="xSelect" class="lengthSelect"></select>
       </div>
-      <div>
+      <div class="item">
         <label for="y">Y: </label>
         <select name="y" id="ySelect" class="lengthSelect"></select>
       </div>
-      <div>
+      <div class="item">
         <label for="tLength">Total Length: </label>
         <select name="tLength" id="tLengthSelect" class="lengthSelect"></select>
       </div>
     </div>
 
     <div class="form">
-        <label for="shotPoint" class="title">Shot Points File</label>
-        <br>
-        <input type="file" name="shotPoint" id="spFile" accept=".csv" onchange="spOnChange()">
+      <label for="shotPoint" class="title">Shot Points File</label>
+      <br>
+      <input type="file" name="shotPoint" id="spFile" accept=".csv" onchange="spOnChange()">
       <p>Select your data set for</p>
       <div class="item">
         <label for="name2">Line Name: </label>
@@ -48,17 +53,19 @@
         <label for="fSP">Final Shot Point: </label>
         <select name="fSP" id="fSPSelect" class="spSelect"></select>
       </div>
-    </div>
+    </div>      
+  </form>
+
+  <div>
+      <button onclick="getOptions()">Run</button>
+      <button id="downloadCsv" onclick="download()" disabled>Download</button>
+      <button onclick="reset()">Reset</button>
+  </div>
+
+  <p id="msg"></p>
+</div>
     
-
-    <div>
-        <button onclick="getOptions()">Run</button>
-        <button id="downloadCsv" onclick="download()" disabled>Download</button>
-    </div>
-
-    <p id="msg"></p>
     <script src="/javascripts/papaparse.min.js"></script>
     <script src="/javascripts/jszip.js"></script>
     <script src="/javascripts/readcsv.js"></script>
-  </body>
-</html>
+<% include ./partials/footer %>

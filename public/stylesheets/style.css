@@ -1,11 +1,36 @@
+html {
+  background: url('../images/spiral.jpg') no-repeat center center fixed;
+  background-size: cover;
+  min-width: fit-content;
+}
+
 body {
   padding: 50px;
   font-family: 'Quicksand', sans-serif;
   font-size: 1em;
 }
 
-a {
-  color: #00B7FF;
+#main {
+  background-color: rgba(0, 0, 0, 0.5);
+  color: white;
+  padding: 5%;
+  min-width: fit-content;
+}
+
+nav a {
+  color: black;
+  text-decoration: none;
+}
+
+nav {
+  background-color: rgba(255, 255, 255, 0.6);
+  margin-bottom: 2%;
+  padding: 5px 8px;
+  display: flex;
+}
+
+nav a:hover {
+  text-decoration: underline;
 }
 
 button {
@@ -21,7 +46,11 @@ button:hover {
 }
 
 button:disabled {
-  color: red;
+  color: grey;
+}
+
+#myForm {
+  display: flex;
 }
 
 .form {
@@ -34,4 +63,32 @@ input[type=file] {
 
 select {
   margin-left: 15px;
+  min-width: 100px;
+  height: 20px;
+  background-color: transparent;
+  color: white;
+}
+
+.item {
+  padding: 3px 0;
+}
+
+option {
+  background-color:black;
+  padding-left: 10px;
+}
+
+#logo {
+  max-width: 30%;
+  min-width: 150px;
+}
+
+#links {
+  padding-top: 1.5rem;
+}
+
+@media only screen and (max-width:620px) {
+  #myForm {
+    display: block;
+  }
 }

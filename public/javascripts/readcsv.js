@@ -2,6 +2,7 @@ var allLengthResults;
 var allSpResults;
 var lineName = document.getElementById('name');
 var fileName = document.getElementById('nameSelect');
+var msg = document.getElementById('msg');
 var lengthFieldsSelected = [];
 var spFieldsSelected = [];
 var spinit, spfinal, currentName;
@@ -45,6 +46,9 @@ function getOptions(){
     // add user selected fields to arrays
     for(var i = 0; i < select.length; i++){
         selected = select[i].value;
+        if(selected == ""){
+            return msg.innerHTML = "Please make sure you've selected an option for all the fields.";
+        }
         if(select[i].className === 'lengthSelect'){
             lengthFieldsSelected.push(selected);
         } else if(select[i].className === 'spSelect'){
@@ -102,13 +106,19 @@ function calculate(){
         }
         finalArray.push(filtered);
     }
-    document.getElementById('msg').innerHTML = "Your files are ready! Click Download to download your files.";
+    msg.innerHTML = "Your files are ready! Click Download to download your files.";
     document.getElementById('downloadCsv').disabled = false;
     console.log(finalArray);
 }
 
 function getNumber(value){
-    return Number(value.split(/\D/).shift());
+    // if value is not an integer or float
+    if(/^[-+]?[0-9]*\.?[0-9]+$/.test(value) == false){
+        // split string at anything that is not . or digit
+        return Number(value.split(/[^\.|0-9]/).shift());
+    } else {
+        return Number(value);
+    }
 }
 
 function nameCheck(){
@@ -128,7 +138,7 @@ function nameCheck(){
     if(newArr.sort().join(',') === nameArr2.sort().join(',')){
         calculate();
     } else {
-        document.getElementById('msg').innerHTML = "Error. Line names do not match. Please check your selected options or your csv data.";
+        msg.innerHTML = "Error. Line names do not match. Please check your selected options or your csv data.";
     }
 }
 
@@ -147,4 +157,15 @@ function download(){
     //     console.log(finalArray[i][0][lineName.value]);
     // }
     
+}
+
+function reset() {
+    document.getElementById('myForm').reset();
+    var select = document.getElementsByTagName('select');
+    for(var i = 0; i < select.length; i++){
+        while(select[i].hasChildNodes()){
+            select[i].removeChild(select[i].firstChild);
+        }
+    }
+    msg.innerHTML = "";
 }
