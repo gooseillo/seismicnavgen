@@ -17,7 +17,7 @@ var strategy = new Auth0Strategy(
     domain: process.env.AUTH0_DOMAIN || 'radixgeo.au.auth0.com',
     clientID: process.env.AUTH0_CLIENT_ID || 'pfN6WhslzOJgll5H0V1T6o7bjHOHluQ0',
     clientSecret: process.env.AUTH0_CLIENT_SECRET || '6GOm28_Uhp8Isjf9aMppT83v_iJ9OhU48e869Y9_4oeMAi4uibbIucEVVuJf1gv5',
-    callbackURL: process.env.AUTH0_CALLBACK_URL || 'https://csv-ingestion.herokuapp.com/callback'
+    callbackURL: process.env.AUTH0_CALLBACK_URL || 'http://csv-ingestion.herokuapp.com/callback'
   },
   function (accessToken, refreshToken, extraParams, profile, done){
     // accessToken is the token to call Auth0 API (not needed in the most cases)
