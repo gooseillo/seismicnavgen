@@ -96,10 +96,10 @@ function calculate(){
         
         for(var j = filtered.length - 1; j >= 0; j--){
             var tLength;
-            if(filtered[j][selectedLength.value] == '---'){
-                tLength = 0;
-            } else {
+            if(/\d/.test(filtered[j][selectedLength.value]) == true){
                 tLength = getNumber(filtered[j][selectedLength.value]);
+            } else {
+                tLength = 0;
             }
             spa = spinit + ((spfinal - spinit) / getNumber(filtered[filtered.length-1][selectedLength.value]) * tLength);
             filtered[j]["SPA"] = spa;
