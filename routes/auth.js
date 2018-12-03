@@ -26,7 +26,8 @@ router.get('/callback', function (req, res, next) {
 // Perform session logout and redirect to homepage
 router.get('/logout', (req, res) => {
   req.logout();
-  res.redirect('https://radixgeo.au.auth0.com/v2/logout?returnTo=https%3A%2F%2Fcsv-ingestion.herokuapp.com&client_id=pfN6WhslzOJgll5H0V1T6o7bjHOHluQ0');
+  res.redirect('http://radixgeo.au.auth0.com/v2/logout?returnTo=http%3A%2F%2seismicnavgen-env.fpqwk5uhuy.ap-southeast-2.elasticbeanstalk.com&client_id=pfN6WhslzOJgll5H0V1T6o7bjHOHluQ0');
+  // res.redirect('https://radixgeo.au.auth0.com/v2/logout?returnTo=https%3A%2F%2Fcsv-ingestion.herokuapp.com&client_id=pfN6WhslzOJgll5H0V1T6o7bjHOHluQ0');
   // res.redirect('https://radixgeo.au.auth0.com/v2/logout?returnTo=http%3A%2F%2Flocalhost%3A3000&client_id=pfN6WhslzOJgll5H0V1T6o7bjHOHluQ0');
 });
 
